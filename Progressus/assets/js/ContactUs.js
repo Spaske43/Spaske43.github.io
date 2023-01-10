@@ -125,10 +125,10 @@ window.onload = function(){
     document.querySelector("#Provera").addEventListener("click",proveriPolje);
 }
 
-function proveriPolje(){
 
-    // Name provera //
+function proveriPolje(){
     var greske = 0;
+    // Name provera //
     var Name = document.querySelector("#Name").value;
     console.log(Name);
     var reName = /^[A-ZŽĐŠĆČ][a-zžđšćč]{2,14}(\s[A-ZŽĐŠĆČ][a-zžđšćč]{2,19})+$/
@@ -146,7 +146,7 @@ function proveriPolje(){
         document.querySelector("#PName").classList.add("hidden");
         document.querySelector("#Name").classList.remove("greska");
         document.querySelector("#Name").classList.add("dobro");
-        greske = 0;
+        greske--;
     }
 
     // Email provera
@@ -168,7 +168,7 @@ function proveriPolje(){
         document.querySelector("#PEmail").classList.add("hidden");
         document.querySelector("#Email").classList.remove("greska");
         document.querySelector("#Email").classList.add("dobro");
-        greske = 0;
+        greske--;
     }
 
     // TextArea provera
@@ -189,10 +189,10 @@ function proveriPolje(){
         document.querySelector("#PText").classList.add("hidden");
         document.querySelector("#textArea").classList.remove("greska");
         document.querySelector("#textArea").classList.add("dobro");
-        greske = 0;
+        greske--;
     }
 
-    if(greske == 0)
+    if(greske == -3)
     {
         document.querySelector("#greske").classList.remove("hidden");
         document.querySelector("#greske").classList.add("show");
@@ -200,8 +200,6 @@ function proveriPolje(){
     {
         document.querySelector("#greske").classList.remove("show");
         document.querySelector("#greske").classList.add("hidden");
-
     }
     console.log(greske);
 }
-

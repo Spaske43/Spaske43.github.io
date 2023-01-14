@@ -37,10 +37,9 @@ for(let i = 0; i < Stranice.length; i++)
 DivMeni.appendChild(ulTag);
 
 
-if(UrlStranice.endsWith("index.html"))
-{
-    $(document).ready(function(){
-        $("#SkrivenoFF").hide();
+
+$(document).ready(function(){
+    $("#SkrivenoFF").hide();
     $("#SkrivenoH").hide();
     $("#SkrivenoHH").hide();
     $("#SkrivenoNR").hide();
@@ -108,23 +107,8 @@ if(UrlStranice.endsWith("index.html"))
             $(this).html("show less" ); 
         }
     })
- })
-}else if(UrlStranice.endsWith("about.html"))
-{
-    $(document).ready(function(){
-        var loc = window.location.href;
+})
 
-        if(loc.endsWith("about.html"))
-        {
-            $("#ddlista ul").hide();
-            $("#ddlista").click(function()
-            {
-                $(this).find("ul").stop().slideToggle();
-        })
-        }
-    })
-}else if(UrlStranice.endsWith("contact.html"))  // Contact strana javaScript
-{
     
     var formTag = document.querySelector("#forma");
     for(let i = 0; i < 3; i++){
@@ -305,8 +289,7 @@ if(UrlStranice.endsWith("index.html"))
     }
 
 
-}else if(UrlStranice.endsWith("signin.html"))
-{
+
     var SignInForma = document.querySelector("#signInForma");
 for(let i = 0; i < 2; i++)
 {
@@ -417,8 +400,7 @@ console.log(SignInForma);
             document.querySelector("#Pass").classList.add("dobro");
         }
     }
-}else if(UrlStranice.endsWith("signup.html"))
-{
+
     var FormaTag = document.querySelector("#RegistracijaForma");
 
 for(let i = 0; i < 4; i++)
@@ -659,5 +641,5 @@ function proveriPolje(){
                 document.querySelector("#CPass").classList.add("dobro");
             }
 }
-}
+
 

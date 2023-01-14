@@ -174,5 +174,17 @@ html { scroll-behavior: smooth; }
 {
 	padding-left: 0px!important;
 	padding-right: 0px!important;
-	border: 3px solid rgb(65, 65, 65);
+	border: 3px solid #642020;
+}
+#Select
+{
+	margin-top: 15px;
+}
+#Select select
+{
+	padding: 3px;
+	border: 2px solid gray;
+	border-radius: 5px;
+	width: 200px;
+	margin-left: 2%;
 }

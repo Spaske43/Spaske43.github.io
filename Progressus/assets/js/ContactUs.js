@@ -1,6 +1,6 @@
 
 var formTag = document.querySelector("#forma");
-for(let i = 0; i < 3; i++){
+for(let i = 0; i < 4; i++){
     var DivRow = document.createElement("div");
     DivRow.setAttribute("class","row");
     if(i == 0){
@@ -87,6 +87,42 @@ for(let i = 0; i < 3; i++){
         divCol.appendChild(pTag);
         DivRow.appendChild(divCol);
         
+    }else if(i == 2){
+        var OptionTagsValues = [" < 18","18 - 35"," > 35"];
+        var classInput = document.createElement("class");
+        classInput.setAttribute("class","col-sm-6");
+        classInput.setAttribute("id","Select");
+        var label = document.createElement("label");
+        label.setAttribute("class","input-group-text");
+        label.setAttribute("for","Age");
+        var tekst = document.createTextNode("Age:");
+        label.appendChild(tekst);
+        var selectTag = document.createElement("select");
+        selectTag.setAttribute("class","form-select");
+        selectTag.setAttribute("id","Age");
+        selectTag.setAttribute("required","");
+        var PrviOption = document.createElement("option");
+        PrviOption.setAttribute("id","Greska")
+        PrviOption.innerHTML = "Choose...";
+        selectTag.appendChild(PrviOption);
+        for(let j = 0; j < 3; j++)
+        {
+            var optionTag = document.createElement("option");
+            optionTag.setAttribute("value",OptionTagsValues[j]);
+            var OptionTagTekst = document.createTextNode(OptionTagsValues[j]);
+            optionTag.appendChild(OptionTagTekst)
+
+            selectTag.appendChild(optionTag);
+        }
+        var Pselect = document.createElement("p");
+        Pselect.innerHTML = "Select your age";
+        Pselect.setAttribute("id","Pselect");
+        Pselect.setAttribute("class","hidden");
+
+        classInput.appendChild(label);
+        classInput.appendChild(selectTag);
+        classInput.appendChild(Pselect);
+        DivRow.appendChild(classInput);
     }else{
         for(let j = 0; j < 2; j++){
             var divCol = document.createElement("div");
@@ -112,7 +148,6 @@ for(let i = 0; i < 3; i++){
                 divCol.appendChild(inputTag);
             }
             DivRow.appendChild(divCol);
-
         }
     }
     formTag.appendChild(DivRow);
@@ -192,7 +227,24 @@ function proveriPolje(){
         greske--;
     }
 
-    if(greske == -3)
+    // Provera za Select
+
+    var ObjSelect = document.querySelector("#Age");
+    var selectProvera = ObjSelect.options[ObjSelect.selectedIndex].value;
+    console.log(selectProvera)
+    if(selectProvera == "Choose...")
+    {
+        document.querySelector("#Pselect").classList.remove("hidden");
+        document.querySelector("#Pselect").classList.add("show");
+        document.querySelector("#Pselect").classList.add("Pgreska");
+        greske++;
+    }else
+    {
+        document.querySelector("#Pselect").classList.add("hidden");
+        greske--;
+    }
+
+    if(greske == -4)
     {
         document.querySelector("#greske").classList.remove("hidden");
         document.querySelector("#greske").classList.add("show");
@@ -203,3 +255,4 @@ function proveriPolje(){
     }
     console.log(greske);
 }
+
